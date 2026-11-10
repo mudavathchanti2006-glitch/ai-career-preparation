@@ -1,0 +1,19 @@
+<?php
+
+// Changed from "database.db" to "project.db" based on your open files
+$dbFile = __DIR__ . "/project.db";
+
+try {
+    $pdo = new PDO("sqlite:" . $dbFile);
+
+    // Set error mode to exception so errors throw exceptions
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    // Set default fetch mode to associative array
+    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+
+    echo "Database connection successful!";
+
+} catch (PDOException $e) {
+    die("Database connection failed: " . $e->getMessage());
+}
+?>
